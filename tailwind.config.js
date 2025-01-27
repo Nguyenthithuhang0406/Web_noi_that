@@ -16,6 +16,20 @@ module.exports = {
         lg: "18px",
         xl: "20px",
       },
+      screens: {
+        xs: {
+          max: "450px",
+        },
+        xm: {
+          min: "451px",
+          max: "639px",
+        },
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+      },
     },
   },
   plugins: [],

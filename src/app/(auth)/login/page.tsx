@@ -3,10 +3,10 @@ import Image from "next/image";
 import React, { useState } from "react";
 import line1 from "../../../../public/images/line1.png";
 import line2 from "../../../../public/images/line2.png";
-import LoginForm from "@/app/_components/LoginForm";
-import RegisterForm from "@/app/_components/RegisterForm";
-import NoRegister from "@/app/_components/NoRegister";
-import NoLogin from "@/app/_components/NoLogin";
+import LoginForm from "@/app/_components/auth/LoginForm";
+import RegisterForm from "@/app/_components/auth/RegisterForm";
+import NoRegister from "@/app/_components/auth/NoRegister";
+import NoLogin from "@/app/_components/auth/NoLogin";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);

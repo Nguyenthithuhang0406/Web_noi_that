@@ -15,11 +15,17 @@ import { AccountLogin } from "@/app/types/auth";
 interface stateLoginProps {
   isLogin: boolean;
   setIsLogin: (value: boolean) => void;
+  setIsForgot: (value: boolean) => void;
 }
 
-const LoginForm: React.FC<stateLoginProps> = ({ isLogin, setIsLogin }) => {
+const LoginForm: React.FC<stateLoginProps> = ({
+  isLogin,
+  setIsLogin,
+  setIsForgot,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSave, setIsSave] = useState(false);
+
   const initValues = {
     email: "",
     password: "",
@@ -28,6 +34,12 @@ const LoginForm: React.FC<stateLoginProps> = ({ isLogin, setIsLogin }) => {
   const handleLogin = (values: AccountLogin) => {
     console.log(values);
   };
+
+  const handleClickForgotPassword = () => {
+    setIsLogin(false);
+    setIsForgot(true);
+  };
+
   return (
     <div
       className={`z-[10] p-[50px] absolute top-[10px] w-full h-full ${
@@ -107,10 +119,16 @@ const LoginForm: React.FC<stateLoginProps> = ({ isLogin, setIsLogin }) => {
             </div>
             <button
               type="submit"
-              className={`bg-[#9F7A5F] hover:bg-[#985e35] cursor-pointer w-full h-[50px] flex justify-center items-center rounded-[10px] text-white text-[20px] font-semibold`}
+              className={`bg-[#9F7A5F] hover:bg-[#985e35] cursor-pointer w-full h-[50px] flex justify-center items-center rounded-[10px] text-white text-[20px] font-semibold mb-[10px]`}
             >
               Đăng nhập
             </button>
+            <p
+              className="text-black text-[15px] mb-[10px] hover:underline text-center hover:text-gray-700 hover:cursor-pointer"
+              onClick={handleClickForgotPassword}
+            >
+              Quên mật khẩu ?
+            </p>
           </Form>
         )}
       </Formik>

@@ -1,7 +1,9 @@
-import React from "react";
+/* eslint-disable */
+import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface stateLoginProps {
   setIsLogin: (value: boolean) => void;
@@ -11,6 +13,8 @@ const FormSendEmail: React.FC<stateLoginProps> = ({
   setIsLogin,
   setIsForgot,
 }) => {
+  const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
+
   const handleClickExit = () => {
     setIsLogin(true);
     setIsForgot(false);
@@ -20,6 +24,12 @@ const FormSendEmail: React.FC<stateLoginProps> = ({
     setIsLogin(false);
     setIsForgot(false);
   };
+
+  const handleRecaptchaChange = (value: string | null) => {
+    setRecaptchaValue(value);
+  };
+
+  const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   return (
     <div className="z-[10] p-[50px] absolute top-[10px] w-full h-full">
@@ -42,6 +52,13 @@ const FormSendEmail: React.FC<stateLoginProps> = ({
             name="email"
             placeholder="Nhập địa chỉ email"
             className="h-[45px] text-black text-[15px] w-full rounded-[10px] border-[1px] shadow-gray-300 border-gray-300 shadow-md focus:border-none focus:outline-none focus:outline-green-200 focus:shadow-none focus:shrink px-[15px]"
+          />
+        </div>
+        {/* them recaptcha vao day */}
+        <div className="mb-[14px]">
+          <ReCAPTCHA
+            sitekey={`${RECAPTCHA_SITE_KEY}`}
+            onChange={handleRecaptchaChange}
           />
         </div>
         <button

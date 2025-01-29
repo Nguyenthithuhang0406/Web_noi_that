@@ -9,10 +9,14 @@ import NoRegister from "@/app/_components/auth/NoRegister";
 import NoLogin from "@/app/_components/auth/NoLogin";
 import NoForgot from "@/app/_components/auth/NoForgot";
 import FormSendEmail from "@/app/_components/auth/FormSendEmail";
+import ResetPassword from "@/app/_components/auth/ResetPassword";
+import NoReset from "@/app/_components/auth/NoReset";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isForgot, setIsForgot] = useState(false);
+  const [isResetPassword, setIsResetPassword] = useState(false);
+
   return (
     <div className="flex items-center justify-center xs:px-[50px] xm:px-[50px] sm:px-[50px] md:px-0 w-full h-screen bg-[#9F7A5F]">
       <div className="flex w-[835px] h-[633px]">
@@ -41,29 +45,40 @@ const Login = () => {
               className="absolute top-[23px] right-[40px]"
             />
           </div>
-          {isLogin && !isForgot && (
+          {isLogin && !isForgot && !isResetPassword && (
             <LoginForm
               isLogin={isLogin}
               setIsLogin={setIsLogin}
               setIsForgot={setIsForgot}
             />
           )}
-          {!isLogin && !isForgot && (
+          {!isLogin && !isForgot && !isResetPassword && (
             <NoRegister isLogin={isLogin} setIsLogin={setIsLogin} />
           )}
-          {isForgot && !isLogin && <NoForgot />}
+          {isForgot && !isLogin && !isResetPassword && <NoForgot />}
+          {isResetPassword && !isLogin && !isForgot && <NoReset />}
         </div>
         <div
           className={`md:w-1/2 xs:w-full xm:w-full sm:w-full h-full relative bg-white`}
         >
-          {isLogin && !isForgot && (
+          {isLogin && !isForgot && !isResetPassword && (
             <NoLogin isLogin={isLogin} setIsLogin={setIsLogin} />
           )}
-          {!isLogin && !isForgot && (
+          {!isLogin && !isForgot && !isResetPassword && (
             <RegisterForm isLogin={isLogin} setIsLogin={setIsLogin} />
           )}
-          {isForgot && !isLogin && (
-            <FormSendEmail setIsLogin={setIsLogin} setIsForgot={setIsForgot} />
+          {isForgot && !isLogin && !isResetPassword && (
+            <FormSendEmail
+              setIsLogin={setIsLogin}
+              setIsForgot={setIsForgot}
+              setIsResetPassword={setIsResetPassword}
+            />
+          )}
+          {isResetPassword && !isLogin && !isForgot && (
+            <ResetPassword
+              setIsLogin={setIsLogin}
+              setIsResetPassword={setIsResetPassword}
+            />
           )}
         </div>
       </div>

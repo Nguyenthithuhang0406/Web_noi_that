@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaFacebook } from "react-icons/fa";
@@ -8,12 +7,15 @@ import ReCAPTCHA from "react-google-recaptcha";
 interface stateLoginProps {
   setIsLogin: (value: boolean) => void;
   setIsForgot: (value: boolean) => void;
+  setIsResetPassword: (value: boolean) => void;
 }
 const FormSendEmail: React.FC<stateLoginProps> = ({
   setIsLogin,
   setIsForgot,
+  setIsResetPassword,
 }) => {
   const [recaptchaValue, setRecaptchaValue] = useState<string | null>(null);
+  const [email, setEmail] = useState<string>("");
 
   const handleClickExit = () => {
     setIsLogin(true);
@@ -31,6 +33,11 @@ const FormSendEmail: React.FC<stateLoginProps> = ({
 
   const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
+  const handleClickSendEmail = () => {
+    setIsResetPassword(true);
+    setIsForgot(false);
+    setIsLogin(false);
+  };
   return (
     <div className="z-[10] p-[50px] absolute top-[10px] w-full h-full">
       <div
@@ -50,6 +57,8 @@ const FormSendEmail: React.FC<stateLoginProps> = ({
           <input
             type="text"
             name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Nhập địa chỉ email"
             className="h-[45px] text-black text-[15px] w-full rounded-[10px] border-[1px] shadow-gray-300 border-gray-300 shadow-md focus:border-none focus:outline-none focus:outline-green-200 focus:shadow-none focus:shrink px-[15px]"
           />
@@ -63,7 +72,11 @@ const FormSendEmail: React.FC<stateLoginProps> = ({
         </div>
         <button
           type="submit"
-          className={`bg-[#9F7A5F] hover:bg-[#985e35] cursor-pointer w-full h-[50px] flex justify-center items-center rounded-[10px] text-white text-[20px] font-semibold mb-[14px]`}
+          disabled={!recaptchaValue || !email}
+          className={`bg-[#9F7A5F] ${
+            !recaptchaValue || !email ? "opacity-50 cursor-not-allowed" : ""
+          } hover:bg-[#985e35] cursor-pointer w-full h-[50px] flex justify-center items-center rounded-[10px] text-white text-[20px] font-semibold mb-[14px]`}
+          onClick={handleClickSendEmail}
         >
           Gửi thông tin
         </button>

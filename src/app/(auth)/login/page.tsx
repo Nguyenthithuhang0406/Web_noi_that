@@ -11,15 +11,19 @@ import NoForgot from "@/app/_components/auth/NoForgot";
 import FormSendEmail from "@/app/_components/auth/FormSendEmail";
 import ResetPassword from "@/app/_components/auth/ResetPassword";
 import NoReset from "@/app/_components/auth/NoReset";
+import ResetSuccess from "@/app/_components/auth/ResetSuccess";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isForgot, setIsForgot] = useState(false);
   const [isResetPassword, setIsResetPassword] = useState(false);
+  const [isResetSuccess, setIsResetSuccess] = useState(false);
 
   return (
     <div className="flex items-center justify-center xs:px-[50px] xm:px-[50px] sm:px-[50px] md:px-0 w-full h-screen bg-[#9F7A5F]">
-      <div className="flex w-[835px] h-[633px]">
+      <div
+        className={`flex w-[835px] h-[633px] ${isResetSuccess ? "hidden" : ""}`}
+      >
         <div
           className={`w-1/2 xs:hidden xm:hidden sm:hidden md:block h-full bg-[url("/images/bg1.png")] bg-cover bg-center relative`}
         >
@@ -78,10 +82,17 @@ const Login = () => {
             <ResetPassword
               setIsLogin={setIsLogin}
               setIsResetPassword={setIsResetPassword}
+              setIsResetSuccess={setIsResetSuccess}
             />
           )}
         </div>
       </div>
+      {isResetSuccess && (
+        <ResetSuccess
+          setIsLogin={setIsLogin}
+          setIsResetSuccess={setIsResetSuccess}
+        />
+      )}
     </div>
   );
 };

@@ -6,10 +6,12 @@ import { FaEyeSlash } from "react-icons/fa";
 interface stateLoginProps {
   setIsLogin: (value: boolean) => void;
   setIsResetPassword: (value: boolean) => void;
+  setIsResetSuccess: (value: boolean) => void;
 }
 const ResetPassword: React.FC<stateLoginProps> = ({
   setIsLogin,
   setIsResetPassword,
+  setIsResetSuccess,
 }) => {
   const [infoReset, setInfoReset] = useState({
     otp: "",
@@ -29,6 +31,11 @@ const ResetPassword: React.FC<stateLoginProps> = ({
       ...infoReset,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleClickSave = () => {
+    setIsResetSuccess(true);
+    setIsResetPassword(false);
   };
 
   return (
@@ -97,6 +104,7 @@ const ResetPassword: React.FC<stateLoginProps> = ({
           <span></span>
         </div>
         <button
+          onClick={handleClickSave}
           type="submit"
           className={`bg-[#9F7A5F] hover:bg-[#985e35] cursor-pointer w-full h-[50px] flex justify-center items-center rounded-[10px] text-white text-[20px] font-semibold mb-[14px]`}
         >

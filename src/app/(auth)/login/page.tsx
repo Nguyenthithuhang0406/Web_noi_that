@@ -12,17 +12,21 @@ import FormSendEmail from "@/app/_components/auth/FormSendEmail";
 import ResetPassword from "@/app/_components/auth/ResetPassword";
 import NoReset from "@/app/_components/auth/NoReset";
 import ResetSuccess from "@/app/_components/auth/ResetSuccess";
+import ConfirmOTP from "@/app/_components/auth/ConfirmOTP";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [isForgot, setIsForgot] = useState(false);
   const [isResetPassword, setIsResetPassword] = useState(false);
   const [isResetSuccess, setIsResetSuccess] = useState(false);
+  const [isConfirmOTP, setIsConfirmOTP] = useState(false);
 
   return (
     <div className="flex items-center justify-center xs:px-[50px] xm:px-[50px] sm:px-[50px] md:px-0 w-full h-screen bg-[#9F7A5F]">
       <div
-        className={`flex w-[835px] h-[633px] ${isResetSuccess ? "hidden" : ""}`}
+        className={`flex w-[835px] h-[633px] ${
+          isResetSuccess || isConfirmOTP ? "hidden" : ""
+        }`}
       >
         <div
           className={`w-1/2 xs:hidden xm:hidden sm:hidden md:block h-full bg-[url("/images/bg1.png")] bg-cover bg-center relative`}
@@ -69,7 +73,11 @@ const Login = () => {
             <NoLogin isLogin={isLogin} setIsLogin={setIsLogin} />
           )}
           {!isLogin && !isForgot && !isResetPassword && (
-            <RegisterForm isLogin={isLogin} setIsLogin={setIsLogin} />
+            <RegisterForm
+              isLogin={isLogin}
+              setIsLogin={setIsLogin}
+              setIsConfirmOTP={setIsConfirmOTP}
+            />
           )}
           {isForgot && !isLogin && !isResetPassword && (
             <FormSendEmail
@@ -92,6 +100,9 @@ const Login = () => {
           setIsLogin={setIsLogin}
           setIsResetSuccess={setIsResetSuccess}
         />
+      )}
+      {isConfirmOTP && (
+        <ConfirmOTP setIsLogin={setIsLogin} setIsConfirmOTP={setIsConfirmOTP} />
       )}
     </div>
   );

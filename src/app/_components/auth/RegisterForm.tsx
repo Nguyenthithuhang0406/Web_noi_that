@@ -14,9 +14,14 @@ import { AccountRegister } from "@/app/types/auth";
 interface stateLoginProps {
   isLogin: boolean;
   setIsLogin: (value: boolean) => void;
+  setIsConfirmOTP: (value: boolean) => void;
 }
 
-const RegisterForm: React.FC<stateLoginProps> = ({ isLogin, setIsLogin }) => {
+const RegisterForm: React.FC<stateLoginProps> = ({
+  isLogin,
+  setIsLogin,
+  setIsConfirmOTP,
+}) => {
   const [showPassword, setShowPassword] = useState(false);
   const initValues = {
     fullName: "",
@@ -28,6 +33,8 @@ const RegisterForm: React.FC<stateLoginProps> = ({ isLogin, setIsLogin }) => {
 
   const handleResigter = (values: AccountRegister) => {
     console.log(values);
+    setIsConfirmOTP(true);
+    setIsLogin(false);
   };
   return (
     <div

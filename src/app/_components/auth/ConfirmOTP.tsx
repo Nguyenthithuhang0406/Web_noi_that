@@ -4,10 +4,12 @@ import { IoCloseSharp } from "react-icons/io5";
 interface stateLoginProps {
   setIsLogin: (value: boolean) => void;
   setIsConfirmOTP: (value: boolean) => void;
+  setIsRegisterSuccess: (value: boolean) => void;
 }
 const ConfirmOTP: React.FC<stateLoginProps> = ({
   setIsLogin,
   setIsConfirmOTP,
+  setIsRegisterSuccess,
 }) => {
   const [otp, setOtp] = useState<string[]>(new Array(6).fill(""));
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
@@ -48,6 +50,11 @@ const ConfirmOTP: React.FC<stateLoginProps> = ({
     }
   };
 
+  const handleClickAgree = () => {
+    setIsRegisterSuccess(true);
+    setIsConfirmOTP(false);
+  };
+
   return (
     <div className="xs:w-full sm:w-full xm:w-full md:w-[712px] h-[340px] bg-white rounded-[8px] relative">
       <div
@@ -82,6 +89,7 @@ const ConfirmOTP: React.FC<stateLoginProps> = ({
             className={`h-[50px] w-[230px] text-center bg-[#9F7A5F] hover:bg-[#985e35] cursor-pointer text-white text-[20px] font-semibold rounded-[10px] ${
               otp[5] === "" ? "opacity-50 cursor-not-allowed" : ""
             }`}
+            onClick={handleClickAgree}
           >
             Đồng ý
           </button>

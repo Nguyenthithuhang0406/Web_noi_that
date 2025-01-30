@@ -13,6 +13,7 @@ import ResetPassword from "@/app/_components/auth/ResetPassword";
 import NoReset from "@/app/_components/auth/NoReset";
 import ResetSuccess from "@/app/_components/auth/ResetSuccess";
 import ConfirmOTP from "@/app/_components/auth/ConfirmOTP";
+import RegisterSuccess from "@/app/_components/auth/RegisterSuccess";
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -20,12 +21,13 @@ const Login = () => {
   const [isResetPassword, setIsResetPassword] = useState(false);
   const [isResetSuccess, setIsResetSuccess] = useState(false);
   const [isConfirmOTP, setIsConfirmOTP] = useState(false);
+  const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
 
   return (
     <div className="flex items-center justify-center xs:px-[50px] xm:px-[50px] sm:px-[50px] md:px-0 w-full h-screen bg-[#9F7A5F]">
       <div
         className={`flex w-[835px] h-[633px] ${
-          isResetSuccess || isConfirmOTP ? "hidden" : ""
+          isResetSuccess || isConfirmOTP || isRegisterSuccess ? "hidden" : ""
         }`}
       >
         <div
@@ -102,7 +104,17 @@ const Login = () => {
         />
       )}
       {isConfirmOTP && (
-        <ConfirmOTP setIsLogin={setIsLogin} setIsConfirmOTP={setIsConfirmOTP} />
+        <ConfirmOTP
+          setIsLogin={setIsLogin}
+          setIsConfirmOTP={setIsConfirmOTP}
+          setIsRegisterSuccess={setIsRegisterSuccess}
+        />
+      )}
+      {isRegisterSuccess && (
+        <RegisterSuccess
+          setIsRegisterSuccess={setIsRegisterSuccess}
+          setIsLogin={setIsLogin}
+        />
       )}
     </div>
   );

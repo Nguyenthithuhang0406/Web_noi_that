@@ -15,12 +15,14 @@ interface stateLoginProps {
   isLogin: boolean;
   setIsLogin: (value: boolean) => void;
   setIsConfirmOTP: (value: boolean) => void;
+  setIsLoginOther: (value: boolean) => void;
 }
 
 const RegisterForm: React.FC<stateLoginProps> = ({
   isLogin,
   setIsLogin,
   setIsConfirmOTP,
+  setIsLoginOther,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   const initValues = {
@@ -35,6 +37,11 @@ const RegisterForm: React.FC<stateLoginProps> = ({
     console.log(values);
     setIsConfirmOTP(true);
     setIsLogin(false);
+  };
+
+  const handleClickLoginOther = () => {
+    setIsLoginOther(true);
+    setIsLogin(true);
   };
   return (
     <div
@@ -162,8 +169,14 @@ const RegisterForm: React.FC<stateLoginProps> = ({
             </div>
             <p className="text-black text-[15px] text-center mb-[10px]">Hoặc</p>
             <div className="flex justify-center mb-[10px]">
-              <FaFacebook className="text-[#1976D2] cursor-pointer text-[24px] mr-[11px]" />
-              <FcGoogle className="text-[24px] cursor-pointer" />
+              <FaFacebook
+                className="text-[#1976D2] cursor-pointer text-[24px] mr-[11px]"
+                onClick={handleClickLoginOther}
+              />
+              <FcGoogle
+                className="text-[24px] cursor-pointer"
+                onClick={handleClickLoginOther}
+              />
             </div>
             <button
               type="submit"

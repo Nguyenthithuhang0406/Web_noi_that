@@ -22,6 +22,7 @@ const Login = () => {
   const [isResetSuccess, setIsResetSuccess] = useState(false);
   const [isConfirmOTP, setIsConfirmOTP] = useState(false);
   const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
+  const [isLoginOther, setIsLoginOther] = useState(false);
 
   return (
     <div className="flex items-center justify-center xs:px-[50px] xm:px-[50px] sm:px-[50px] md:px-0 w-full h-screen bg-[#9F7A5F]">
@@ -60,6 +61,8 @@ const Login = () => {
               isLogin={isLogin}
               setIsLogin={setIsLogin}
               setIsForgot={setIsForgot}
+              setIsLoginOther={setIsLoginOther}
+              isLoginOther={isLoginOther}
             />
           )}
           {!isLogin && !isForgot && !isResetPassword && (
@@ -79,6 +82,7 @@ const Login = () => {
               isLogin={isLogin}
               setIsLogin={setIsLogin}
               setIsConfirmOTP={setIsConfirmOTP}
+              setIsLoginOther={setIsLoginOther}
             />
           )}
           {isForgot && !isLogin && !isResetPassword && (

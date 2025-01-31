@@ -1,7 +1,7 @@
 /* eslint-disable*/
 "use client";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { BiCheckbox } from "react-icons/bi";
@@ -12,7 +12,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { loginValidation } from "@/app/utils/validation/loginValidation";
 import { AccountLogin } from "@/app/types/auth";
 import { RiFacebookFill } from "react-icons/ri";
-import { signIn, useSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
 
 interface stateLoginProps {
   isLogin: boolean;
@@ -38,7 +38,7 @@ const LoginForm: React.FC<stateLoginProps> = ({
     console.log(session);
   }
   // ---
-  
+
   const initValues = {
     email: "",
     password: "",
@@ -86,7 +86,10 @@ const LoginForm: React.FC<stateLoginProps> = ({
                   </div>
                   <p>Đăng nhập bằng Facebook</p>
                 </div>
-                <div className="w-full hover:shadow-lg h-[50px] flex items-center shadow-gray-500 shadow-md rounded-[10px] rounded-[10px]e text-[15px] mb-[19px] cursor-pointer">
+                <div
+                  onClick={() => signIn("google")}
+                  className="w-full hover:shadow-lg h-[50px] flex items-center shadow-gray-500 shadow-md rounded-[10px] rounded-[10px]e text-[15px] mb-[19px] cursor-pointer"
+                >
                   <FcGoogle className="text-[35px] mx-[19px]" />
                   <p className="text-[#1976D2]">Đăng nhập bằng Google</p>
                 </div>

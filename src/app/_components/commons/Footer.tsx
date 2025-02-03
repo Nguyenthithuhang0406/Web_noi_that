@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="w-[50px] h-[50px] bg-white rounded-[50%] flex items-center justify-center absolute bottom-[77px] right-[41px] z-[100] cursor-pointer hover:bg-[#cfcece]">
+      <div className="w-[50px] h-[50px] bg-white rounded-[50%] flex items-center justify-center absolute bottom-[77px] right-[41px] z-[5] cursor-pointer hover:bg-[#cfcece]">
         <FaChevronUp className="text-[24px] text-[#9F7A5F]" />
       </div>
     </div>

@@ -17,6 +17,7 @@ import { FaCaretDown } from "react-icons/fa";
 import { FaCaretUp } from "react-icons/fa";
 import { GrFormNextLink } from "react-icons/gr";
 import { IoIosLogOut } from "react-icons/io";
+import SubMenu from "@/app/_components/commons/SubMenu";
 
 const Header = () => {
   const [isShowMenutop, setIsShowMenutop] = useState<boolean>(false);
@@ -48,7 +49,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="xs:hidden top-0 fixed xm:hidden sm:hidden md:flex justify-between items-center w-full h-[100px] px-[30px] py-[15px]">
+      <div className="xs:hidden bg-white top-0 fixed xm:hidden sm:hidden md:flex justify-between items-center w-full h-[100px] px-[30px] py-[15px]">
         <div
           className="w-[100px] h-[72px] cursor-pointer"
           onClick={() => router.push("/")}
@@ -153,7 +154,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="md:flex justify-center xs:hidden xm:hidden sm:hidden lg:hidden w-[60%] h-[33px] mt-[100px] items-center relative">
+      <div className="md:flex justify-center bg-white xs:hidden xm:hidden sm:hidden lg:hidden w-[60%] h-[33px] mt-[100px] items-center relative">
         <IoIosSearch className="absolute top-[5px] left-[35%] text-[24px] text-[#9F7A5F]" />
         <input
           placeholder="Tìm sản phẩm ..."
@@ -161,7 +162,7 @@ const Header = () => {
         />
       </div>
 
-      <div className="flex fixed md:hidden top-0 w-full h-[100px] px-[50px] items-center justify-between">
+      <div className="flex fixed bg-white md:hidden top-0 w-full h-[100px] px-[50px] items-center justify-between">
         <div
           className="w-[100px] h-[72px] cursor-pointer mr-[50px]"
           onClick={() => router.push("/")}
@@ -177,7 +178,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="flex fixed md:hidden shadow-lg rounded-t-lg bottom-0 w-full h-[50px] px-[50px] bg-[#F9F9F9] items-center justify-between">
+      <div className="flex fixed md:hidden shadow-lg rounded-t-lg z-[10] bottom-0 w-full h-[50px] px-[50px] bg-[#F9F9F9] items-center justify-between">
         <div className="group relative">
           <AiFillHome
             onClick={() => router.push("/")}
@@ -262,6 +263,8 @@ const Header = () => {
           )}
         </div>
       </div>
+
+      <SubMenu/>
     </>
   );
 };

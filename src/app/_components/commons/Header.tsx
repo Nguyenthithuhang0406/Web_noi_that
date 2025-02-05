@@ -49,7 +49,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="xs:hidden bg-white top-0 fixed xm:hidden sm:hidden md:flex justify-between items-center w-full h-[100px] px-[30px] py-[15px]">
+      <div className="xs:hidden z-[10] bg-white top-0 fixed xm:hidden sm:hidden md:flex justify-between items-center w-full h-[100px] px-[30px] py-[15px]">
         <div
           className="w-[100px] h-[72px] cursor-pointer"
           onClick={() => router.push("/")}
@@ -154,7 +154,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="md:flex justify-center bg-white xs:hidden xm:hidden sm:hidden lg:hidden w-[60%] h-[33px] mt-[100px] items-center relative">
+      <div className="md:flex z-[10] justify-center bg-white xs:hidden xm:hidden sm:hidden lg:hidden w-[60%] h-[33px] mt-[100px] items-center relative">
         <IoIosSearch className="absolute top-[5px] left-[35%] text-[24px] text-[#9F7A5F]" />
         <input
           placeholder="Tìm sản phẩm ..."
@@ -162,7 +162,7 @@ const Header = () => {
         />
       </div>
 
-      <div className="flex fixed bg-white md:hidden top-0 w-full h-[100px] px-[50px] items-center justify-between">
+      <div className="flex z-[10] fixed bg-white md:hidden top-0 w-full h-[100px] px-[50px] items-center justify-between">
         <div
           className="w-[100px] h-[72px] cursor-pointer mr-[50px]"
           onClick={() => router.push("/")}

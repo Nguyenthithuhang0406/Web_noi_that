@@ -1,12 +1,16 @@
-import HomeComponent from "@/app/_components/home/HomeComponent";
-import React from "react";
+/* eslint-disable*/
+"use client";
+import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const Home = () => {
-  return (
-    <div>
-      <HomeComponent />
-    </div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/home/livingRoom"); // Điều hướng tự động
+  }, []);
+
+  return <div></div>;
 };
 
 export default Home;

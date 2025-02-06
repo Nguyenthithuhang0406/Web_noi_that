@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   redirects: async () => [
     {
       source: "/",
-      destination: "/home",
+      destination: "/home/livingRoom",
       permanent: true, // Hoặc false nếu chỉ muốn tạm thời
     },
   ],

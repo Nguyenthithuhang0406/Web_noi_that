@@ -1,10 +1,10 @@
-import Home from "@/app/(pages)/home/page";
+import RoomPage from "@/app/(pages)/home/[roomType]/page";
 import React from "react";
 
 const page = () => {
   return (
     <main>
-      <Home/>
+      <RoomPage/>
     </main>
   );
 };

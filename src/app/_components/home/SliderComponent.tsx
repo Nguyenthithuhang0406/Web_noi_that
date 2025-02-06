@@ -65,7 +65,7 @@ const SliderComponent = () => {
                 alt={`Slide ${index}`}
                 layout="fill"
                 objectFit="cover"
-                className="rounded-lg lg:rounded-none shadow-md object-cover"
+                className="rounded-lg aspect-[4/3] lg:rounded-none shadow-md object-cover"
                 priority={true}
                 quality={100}
               />

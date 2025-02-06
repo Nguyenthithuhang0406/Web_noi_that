@@ -1,11 +1,11 @@
-import HomeComponent from "@/app/_components/home/HomeComponent";
+import Home from "@/app/(pages)/home/page";
 import React from "react";
 
 const page = () => {
   return (
-    <div>
-      <HomeComponent />
-    </div>
+    <main>
+      <Home/>
+    </main>
   );
 };
 

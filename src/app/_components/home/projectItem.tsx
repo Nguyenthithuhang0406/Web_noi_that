@@ -8,7 +8,7 @@ interface projectItemProps {
 
 const ProjectItem: React.FC<projectItemProps> = ({ image, title }) => {
   return (
-    <div className="w-[220px] hover:scale-105 transition-transform">
+    <div className="w-[220px] mx-[29px] hover:scale-105 transition-transform">
       <div className="w-full h-[152px] overflow-hidden relative">
         <Image src={image} alt={title} layout="fill" objectFit="cover" />
       </div>

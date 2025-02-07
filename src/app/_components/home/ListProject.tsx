@@ -37,11 +37,12 @@ const ListProject = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
+    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1280, // Màn hình >= 1280px (PC)
@@ -82,7 +83,7 @@ const ListProject = () => {
       <div className="w-full">
         <Slider {...settings}>
           {listProjectView.map((item, index) => (
-            <div key={index} className="mx-[29px]">
+            <div key={index} >
               <ProjectItem image={item.image} title={item.title} />
             </div>
           ))}
